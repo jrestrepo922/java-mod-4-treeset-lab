@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.TreeSet;
 
 public class Main {
@@ -10,6 +11,23 @@ public class Main {
 
     public static ArrayList<Integer> getNums(int[] nums) {
         // your code here
-        return null;
+        TreeSet<Integer> numberSorted = new TreeSet<>(new MaxComparator());
+        for(int i = 0; i < nums.length; i++){
+            numberSorted.add(nums[i]);
+        }
+
+        return new ArrayList<>(numberSorted.tailSet(25));
     }
 }
+
+
+
+
+
+class MaxComparator implements Comparator<Integer> {
+    @Override
+    public int compare(Integer o1, Integer o2) {
+        return o1.compareTo(o2);
+    }
+}
+
